@@ -1,0 +1,25 @@
+h1 {
+    text-align: center;
+}
+
+.cell {
+    width: 75px;
+    height: 75px;
+    border: 2px solid;
+    box-shadow: 0 0 0 2px;
+    line-height: 50px;
+    font-size: 60px;
+    cursor: pointer;
+}
+
+#grid {
+    text-align: center;
+}
+
+#cells {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 225px;
+    margin: auto;
+}
+
