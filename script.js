@@ -40,14 +40,25 @@ function setPiece() {
 }
 
 function checkWinner() {
+    checkRows();
+    checkColumns();
+    checkMainDiagonal();
+    checkSecondaryDiagonal();
+    checkWhiteCells(); 
+}
+
+function checkRows() {
     for (let r = 0; r < rows; r++) {
-         for (let c = 0; c < columns - 3; c++){
-            if (board[r][c] != '' && board[r][c] === board[r][c+1] && board[r][c+1] === board[r][c+2] && board[r][c+2] === board[r][c+3]) {
-                setWinner();
-                return;
-            }
-        }
-    }
+        for (let c = 0; c < columns - 3; c++){
+           if (board[r][c] != '' && board[r][c] === board[r][c+1] && board[r][c+1] === board[r][c+2] && board[r][c+2] === board[r][c+3]) {
+               setWinner();
+               return;
+           }
+       }
+   }
+}
+
+function checkColumns() {
     for (let c = 0; c < columns; c++) {
         for (let r = 0; r < rows - 3; r++) {
             if (board[r][c] != '' && board[r][c] === board[r+1][c] && board[r+1][c] === board[r+2][c] && board[r+2][c] === board[r+3][c]) {
@@ -56,6 +67,9 @@ function checkWinner() {
             } 
         }
     }
+}
+
+function checkMainDiagonal() {
     for (let r = 0; r < rows - 3; r++) {
         for (let c = 0; c < columns - 3; c++) {
             if (board[r][c] != '' && board[r][c] === board[r+1][c+1] && board[r+1][c+1] === board[r+2][c+2] && board[r+2][c+2] === board[r+3][c+3]) {
@@ -64,6 +78,9 @@ function checkWinner() {
             }
         }
     }
+}
+
+function checkSecondaryDiagonal() {
     for (let r = 0; r < rows - 3; r++) {
         for (let c = 3; c <= columns; c++) {
             if (board[r][c] != '' && board[r][c] === board[r+1][c-1] && board[r+1][c-1] === board[r+2][c-2] && board[r+2][c-2] === board[r+3][c-3]) {
@@ -72,6 +89,9 @@ function checkWinner() {
             }
         }
     }
+}
+
+function checkWhiteCells() {
     let whiteCells = 0;
     for (let r = 0; r < rows; ++r) {
         for (let c = 0; c < columns; ++c) {
